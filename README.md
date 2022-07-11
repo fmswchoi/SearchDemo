@@ -41,7 +41,7 @@ KAKAO API 와 NAVER API 의 결과값 중 동일한 장소라고 판단하는 �
 - seq (int) : (auto increment) 시퀀스값 (PK값)
 - keyword (String) : 검색 키워드(PK 값)
 - count (int) : 검색 횟수
-4. H2 DB 사용 
+4. H2 DB 사용 : application 재실행시 데이터 삭제
 
 ※ 예제
 - 요청 : http://localhost:8080/searcher/search/place/count
