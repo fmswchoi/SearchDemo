@@ -62,3 +62,7 @@ KAKAO API 와 NAVER API 의 결과값 중 동일한 장소라고 판단하는 �
 -> 나중에 kakao 검색 API 혹은 다른 API들에서 오류가 발생하면, 그래도 결과는 보여줘야하니, cache에 저장된 결과를 보여준다.
 -> cache 의 주기는 1~2분으로 설정한다.
 -> 이러한 API 호출 및 cache에 저장하는 로직은 비동기로 처리하도록 한다. ( Message Queue 적용 ?)
+
+
+### 테스트 방법 (HTTP Requset file 추가)
+
