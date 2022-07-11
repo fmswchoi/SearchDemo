@@ -22,8 +22,9 @@
 ### 장소 검색 API
 1. API-URL : /searcher/search/place 
 2. requset param : (String) keyword
-3. response : List<String> <br>
-※ 예제 <br>
+3. response : List(String) <br>
+
+ ※ 예제 <br>
  - 요청 : http://localhost:8080/searcher/search/place?&keyword=고기집 <br>
  - 응답 : ["금돼지식당", "숙성도 노형점", "통나무닭갈비 본점", "가보정 1관", "몽탄", "강릉짬뽕순두부 동화가든 본점", "향유갈비", "신촌황소곱창 인계직영점", 100년영동생갈비", 숙성도 노형본관"]
 
@@ -33,4 +34,17 @@ KAKAO API 와 NAVER API 의 결과값 중 동일한 장소라고 판단하는 �
 ※ NAVER 장소 검색 API 에서는 장소명에 HTML 태그가 존재<br>
 
 
-### H2 DB사용
+### 검색 키워드 목록 API
+1. API-URL : /search/place/count
+2. requset param : 
+3. response :
+- seq (int) : (auto increment) 시퀀스값 (PK값)
+- keyword (String) : 검색 키워드(PK 값)
+- count (int) : 검색 횟수
+4. H2 DB 사용 
+
+※ 예제
+- 요청 : http://localhost:8080/searcher/search/place/count
+- 응답 : [ {"seq" : 1, "keyword":고기집", "count":1} ] 
+
+
