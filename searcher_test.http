@@ -1,0 +1,8 @@
+### 장소 검색 API
+GET http://localhost:8080/searcher/search/place?keyword=고기
+
+
+### 검색 키워드 목록 TOP10
+GET http://localhost:8080/searcher/search/place/count
+
+
