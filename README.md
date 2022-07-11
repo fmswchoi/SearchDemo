@@ -47,4 +47,18 @@ KAKAO API 와 NAVER API 의 결과값 중 동일한 장소라고 판단하는 �
 - 요청 : http://localhost:8080/searcher/search/place/count
 - 응답 : [ {"seq" : 1, "keyword":고기집", "count":1} ] 
 
+## 개선/고민 사항
+1. 현재 각 API 종류별로 application.properties 에 필요한 정보를 넣고 service 로직을 개발해야함
+-> API 의 restTemplate 호출 부분을 공통화하고, return 값을 Map 으로 하여, 각 API response 객체들과 맵핑을 한다.
+-> 사실 API 별 response 구조가 다르기 때문에, 공통으로 사용하는 것이 맞을까? (새로운 API 추가시 변경영역 최소화를 위한..)
 
+2. 중복 처리 개선이 필요함.
+-> kakao 검색 기준으로 동일한 정보들을 먼저 찾아 set에 넣고, 그 뒤에 kakao 검색결과, naver검색결과를 set에 넣고있음
+-> 10개 초과의 결과가 나오지 않도록, 다넣은 set에서 10개 초과의 값들은 제거하도록 함.
+-> 성능적으로 굉장히 비효율적이기에, 다른 로직으로 개선필요.
+
+3. 대용량 트래픽을 위한 개선사항
+-> 검색을 하였을 때, 먼저 해당 결과값을 cache 에 저장을 한다.
+-> 나중에 kakao 검색 API 혹은 다른 API들에서 오류가 발생하면, 그래도 결과는 보여줘야하니, cache에 저장된 결과를 보여준다.
+-> cache 의 주기는 1~2분으로 설정한다.
+-> 이러한 API 호출 및 cache에 저장하는 로직은 비동기로 처리하도록 한다. ( Message Queue 적용 ?)
