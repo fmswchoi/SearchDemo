@@ -65,4 +65,9 @@ KAKAO API 와 NAVER API 의 결과값 중 동일한 장소라고 판단하는 �
 
 
 ### 테스트 방법 (HTTP Requset file 추가)
+-> searcher_test.http 파일 첨부 <br>
+1) 장소 검색 API <br>
+GET http://localhost:8080/searcher/search/place?keyword=고기 <br>
+2) 검색 키워드 목록 TOP10 <br>
+GET http://localhost:8080/searcher/search/place/count <br>
 
